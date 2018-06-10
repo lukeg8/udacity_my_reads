@@ -6,7 +6,8 @@ import * as BooksAPI from "../BooksAPI";
 class Search extends Component {
     state = {
         searchDisplay: [],
-        inputState: ""
+        inputState: "",
+        searchMsg: "Type something in search box"
     };
 
     updateBookShelfStatus(bookID, newBookShelf) {
@@ -44,7 +45,7 @@ class Search extends Component {
                     });
                 });
             });
-        } else if (inputBox === '') {
+        } else if (inputBox === "") {
             this.setState({
                 searchDisplay: []
             });
@@ -57,7 +58,7 @@ class Search extends Component {
         this.searchAll(inputBox);
     };
     render() {
-        const { searchDisplay, inputState } = this.state;
+        const { searchDisplay, inputState, searchMsg } = this.state;
         const showSearch =
             searchDisplay.length !== 0
                 ? searchDisplay.map(book => (
@@ -67,7 +68,7 @@ class Search extends Component {
                           handleBookShelfChangeRef={this.handleBookShelfAppRef}
                       />
                   ))
-                : "Type something in search box";
+                : searchMsg
         return (
             <div className="search-books">
                 <div className="search-books-bar">
@@ -84,7 +85,10 @@ class Search extends Component {
                     </div>
                 </div>
                 <div className="search-books-results">
-                    <div>{searchDisplay.length !== 0 && `${searchDisplay.length} Search Results`}</div>
+                    <div>
+                        {searchDisplay.length !== 0 &&
+                            `${searchDisplay.length} Search Results`}
+                    </div>
                     <ol className="books-grid">{showSearch}</ol>
                 </div>
             </div>

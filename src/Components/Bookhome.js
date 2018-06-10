@@ -23,9 +23,9 @@ class Bookhome extends Component {
     getBookShelf = shelf =>
         this.state.booksOnDisplay.filter(bookObj => bookObj.shelf === shelf);
     /**
-    *   Uses bookID and moves it to the newBookShelf
-    *   Updates state of booksOnDisplay
-    */
+     *   Uses bookID and moves it to the newBookShelf
+     *   Updates state of booksOnDisplay
+     */
     handleBookShelfChange = (bookID, newBookShelf) => {
         this.setState(prevState => {
             // Extracts the one Book that is modified
@@ -52,34 +52,28 @@ class Bookhome extends Component {
         this.updateBookShelfStatus(bookID, newBookShelf);
     };
     render() {
+        const shelfDisplay = {
+            currentlyReading: ["currentlyReading", "Curently Reading"],
+            wantToRead: ["wantToRead", "Want To Read"],
+            read: ["read", "Read"]
+        };
+        const bookShelfDisplay = Object.keys(shelfDisplay).map(eachShelf => {
+            return (
+                <Bookshelf
+                    whichBookShelf={shelfDisplay[eachShelf]['1']}
+                    bookshelf={this.getBookShelf(shelfDisplay[eachShelf]['0'])}
+                    handleBookShelfChangeRef={this.handleBookShelfChange}
+                />
+            );
+        });
         return (
             <div className="list-books">
                 <div className="list-books-title">
-                    <h1>MyReads</h1>
+                    <h1>My Reads</h1>
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <Bookshelf
-                            whichBookShelf={"Curently Reading"}
-                            bookshelf={this.getBookShelf("currentlyReading")}
-                            handleBookShelfChangeRef={
-                                this.handleBookShelfChange
-                            }
-                        />
-                        <Bookshelf
-                            whichBookShelf={"Want To Read"}
-                            bookshelf={this.getBookShelf("wantToRead")}
-                            handleBookShelfChangeRef={
-                                this.handleBookShelfChange
-                            }
-                        />
-                        <Bookshelf
-                            whichBookShelf={"Read"}
-                            bookshelf={this.getBookShelf("read")}
-                            handleBookShelfChangeRef={
-                                this.handleBookShelfChange
-                            }
-                        />
+                        {bookShelfDisplay}
                     </div>
                 </div>
                 <div className="open-search">
