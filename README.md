@@ -5,6 +5,9 @@ INSTALL
 git clone https://github.com/lukeg8/udacity_my_reads.git
 ```
 ```
+cd udacity_my_reads/
+```
+```
 npm install
 ```
 ```
