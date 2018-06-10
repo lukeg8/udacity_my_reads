@@ -6,12 +6,16 @@
     "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
+    "gh-pages": "^1.2.0",
     "react-scripts": "1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy" : "gh-pages -d build"
+  },
+  "homepage": "https://lukeg8.github.io/udacity_my_reads"
 }
