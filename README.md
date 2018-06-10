@@ -4,9 +4,12 @@ INSTALL
 ```
 git clone https://github.com/lukeg8/udacity_my_reads.git
 ```
+```
 npm install
 ```
+```
 npm start
+```
 ```
 Open browser to http://localhost:3000/
 ```
